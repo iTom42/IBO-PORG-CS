@@ -36,3 +36,6 @@ CLAUDE.md
 # OS files
 .DS_Store
 Thumbs.db
+
+# Editor (local)
+.vscode/
