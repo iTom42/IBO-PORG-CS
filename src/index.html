@@ -63,8 +63,7 @@
     </script>
 
     <!-- App Scripts -->
-
-    <!-- App Scripts -->
+    <script src="js/i18n.js"></script>
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
 
@@ -179,7 +178,7 @@
 
             <div class="flex items-center gap-3">
                 <!-- MSVK Logo -->
-                <img src="assets/logo.jpg" alt="MSVK" class="h-10 rounded">
+                <img src="assets/logo.png" alt="MSVK" class="h-10 rounded">
                 <h1 class="text-xl font-bold text-msvk-dark-blue tracking-wide">
                     DIGIFLOW
                 </h1>
@@ -204,25 +203,28 @@
 
             <!-- VIEW: Age Gate -->
             <div x-show="currentView === 'age-gate'" x-transition.opacity
-                class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-msvk-light-blue to-indigo-50 p-6">
+                class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-msvk-light-blue to-indigo-50 p-6 md:p-10">
 
                 <!-- MSVK Logo at top -->
-                <div class="mb-6">
-                    <img src="assets/logo.jpg" alt="MSVK" class="h-20 md:h-24 rounded-lg shadow mx-auto block">
+                <div class="mb-10">
+                    <img src="assets/logo.png" alt="MSVK" class="h-20 md:h-24 rounded-lg mx-auto block">
                 </div>
 
-                <h1 class="text-3xl md:text-5xl font-black mb-4 text-center text-msvk-dark-blue drop-shadow-sm">
+                <h1 class="text-4xl md:text-6xl font-black mb-5 text-center text-msvk-dark-blue drop-shadow-sm tracking-tight">
                     Vítejte!
                 </h1>
 
-                <p class="text-lg md:text-xl text-center text-gray-600 mb-6 max-w-2xl">
+                <p class="text-base md:text-lg leading-relaxed text-center text-gray-500 mb-3 max-w-xl">
                     Víte, jak reagovat na nepříjemné situace na sociálních sítích?<br>
-                    A kolik času věnujete každý den zábavě u obrazovek?<br><br>
-                    <strong>Pojďme se na to společně podívat!</strong>
+                    A kolik času věnujete každý den zábavě u obrazovek?
                 </p>
 
-                <h2 class="text-xl md:text-2xl font-bold mb-8 text-center text-msvk-dark-blue">
-                    Zvolte prosím svůj věk:
+                <p class="text-lg md:text-xl font-semibold text-center text-gray-700 mb-12 max-w-xl">
+                    Pojďme se na to společně podívat!
+                </p>
+
+                <h2 class="text-sm md:text-base font-bold uppercase tracking-widest mb-8 text-center text-msvk-dark-blue/70">
+                    Zvolte prosím svůj věk
                 </h2>
 
                 <div class="flex flex-col md:flex-row gap-8 w-full max-w-4xl justify-center">
@@ -268,7 +270,7 @@
                             class="absolute top-0 right-0 p-8 opacity-20 transform group-hover:scale-110 transition-transform text-9xl">
                             💬</div>
                         <h3 class="text-3xl font-bold mb-2">KVÍZ</h3>
-                        <p class="text-lg opacity-90">Zvládnete náročné situace na sítích? Otestujte se v kvízu!</p>
+                        <p class="text-lg opacity-90" x-text="t('menu_quiz_desc', ageMode)"></p>
                         <div class="mt-8 inline-block px-6 py-3 rounded-full font-bold bg-white/20 backdrop-blur-sm">
                             Spustit</div>
 
@@ -287,7 +289,7 @@
                             class="absolute top-0 right-0 p-8 opacity-20 transform group-hover:scale-110 transition-transform text-9xl">
                             📅</div>
                         <h3 class="text-3xl font-bold mb-2">MŮJ DEN</h3>
-                        <p class="text-lg opacity-90">Zjistěte, kolik času trávíte zábavou u obrazovek.</p>
+                        <p class="text-lg opacity-90" x-text="t('menu_planner_desc', ageMode)"></p>
                         <div class="mt-8 inline-block px-6 py-3 rounded-full font-bold bg-white/20 backdrop-blur-sm">
                             Spustit</div>
 
@@ -336,7 +338,7 @@
                                 x-text="`Situace ${currentScenarioIndex + 1} / ${totalScenarios}`"></span>
                             <h2 class="text-3xl font-bold mb-4" x-text="scenario.title"
                                 :class="ageMode === 'child' ? 'text-child-blue' : 'text-slate-800'"></h2>
-                            <p class="text-lg mb-8" x-text="scenario.description"></p>
+                            <p class="text-lg mb-8" x-html="tv(scenario.description, ageMode)"></p>
 
                             <!-- Options -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -358,9 +360,8 @@
                         class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center max-w-2xl mx-auto">
                         <div class="text-8xl mb-6">🎉</div>
                         <h2 class="text-4xl font-bold mb-4"
-                            :class="ageMode === 'child' ? 'text-msvk-dark-blue' : 'text-slate-800'">
-                            Máte hotovo.<br>Jak to dopadlo?
-                        </h2>
+                            :class="ageMode === 'child' ? 'text-msvk-dark-blue' : 'text-slate-800'"
+                            x-html="t('quiz_done_title', ageMode)"></h2>
 
                         <!-- Score Display -->
                         <template x-if="showResults">
@@ -377,8 +378,8 @@
                                     <span class="text-2xl" x-text="ans.type === 'ideal' ? '✅' : '⚠️'"></span>
                                     <div>
                                         <div class="font-bold text-sm opacity-70" x-text="getScenarioAt(index)?.title"></div>
-                                        <div x-text="ans.feedback"></div>
-                                        <div class="text-xs opacity-50 mt-1">Kliknutím zobrazíte detail</div>
+                                        <div x-text="tv(ans.feedback, ageMode)"></div>
+                                        <div class="text-xs opacity-50 mt-1" x-text="t('quiz_review_hint', ageMode)"></div>
                                     </div>
                                 </div>
                             </template>
@@ -414,7 +415,7 @@
                             </h3>
 
                             <!-- Feedback Text -->
-                            <p class="text-xl text-gray-700 mb-8" x-text="currentFeedback?.feedback"></p>
+                            <p class="text-xl text-gray-700 mb-8" x-text="tv(currentFeedback?.feedback, ageMode)"></p>
 
                             <!-- Ideal Solution Hint (if wrong) -->
                             <template x-if="currentFeedback?.type !== 'ideal'">
@@ -462,16 +463,16 @@
                          :class="getUserAnswerAt(selectedQuestionIndex)?.type === 'ideal' ? 'bg-green-50 border border-green-200' : (getUserAnswerAt(selectedQuestionIndex)?.type === 'ok' ? 'bg-yellow-50 border border-yellow-200' : 'bg-red-50 border border-red-200')">
                             <div class="font-bold text-sm mb-2"
                                 :class="getUserAnswerAt(selectedQuestionIndex)?.type === 'ideal' ? 'text-green-700' : (getUserAnswerAt(selectedQuestionIndex)?.type === 'ok' ? 'text-yellow-700' : 'text-red-700')">
-                                <span x-text="getUserAnswerAt(selectedQuestionIndex)?.type === 'ideal' ? '✅ Vaše odpověď (ideální):' : (getUserAnswerAt(selectedQuestionIndex)?.type === 'ok' ? '🤔 Vaše odpověď (dobré, ale...):' : '⚠️ Vaše odpověď (nevhodné):')"></span>
+                                <span x-text="getUserAnswerAt(selectedQuestionIndex)?.type === 'ideal' ? t('detail_answer_ideal', ageMode) : (getUserAnswerAt(selectedQuestionIndex)?.type === 'ok' ? t('detail_answer_ok', ageMode) : t('detail_answer_bad', ageMode))"></span>
                             </div>
                             <div class="font-bold text-base mb-2" x-text="getUserAnswerAt(selectedQuestionIndex)?.text || '-'"></div>
-                            <div class="text-sm opacity-80" x-text="getUserAnswerAt(selectedQuestionIndex)?.feedback || ''"></div>
+                            <div class="text-sm opacity-80" x-text="tv(getUserAnswerAt(selectedQuestionIndex)?.feedback, ageMode)"></div>
                         </div>
                         <!-- Ideal Answer -->
                         <div class="mb-4 p-4 rounded-xl bg-green-50 border border-green-200">
                             <div class="font-bold text-sm text-green-700 mb-2">💡 Ideální řešení:</div>
                             <div class="font-bold text-base mb-2" x-text="getIdealAnswer(getScenarioAt(selectedQuestionIndex))?.text || '-'"></div>
-                            <div class="text-sm text-green-700 opacity-80" x-text="getIdealAnswer(getScenarioAt(selectedQuestionIndex))?.feedback || ''"></div>
+                            <div class="text-sm text-green-700 opacity-80" x-text="tv(getIdealAnswer(getScenarioAt(selectedQuestionIndex))?.feedback, ageMode)"></div>
                         </div>
                         <button @click="closeQuestionDetail()" class="w-full py-3 rounded-xl bg-slate-800 text-white font-bold mt-4">
                                 Zavřít
@@ -530,14 +531,13 @@
                     <button @click="evaluateDay()" :disabled="!isGridFull"
                         class="px-6 py-3 rounded-full font-bold shadow-lg transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                         :class="isGridFull ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:scale-105' : 'bg-gray-200 text-gray-400'">
-                        <span x-text="isGridFull ? 'Vyhodnotit den ✅' : 'Vyplň celý den ⏳'"></span>
+                        <span x-text="isGridFull ? 'Vyhodnotit den ✅' : t('planner_eval_incomplete', ageMode)"></span>
                     </button>
                 </div>
 
                 <!-- Instructions -->
-                <div class="bg-blue-50 px-4 py-2 text-sm text-blue-800 border-b border-blue-100">
-                    <strong>Návod:</strong> Nejprve vyberte všední nebo víkendový den. Poté přetahujte povinné položky z levého sloupce do časových oken. Po použití všech povinných ikon se odemknou volitelné ikonky. Kliknutím na "Mazat aktivitu" můžete smazat libovolnou buňku.
-                </div>
+                <div class="bg-blue-50 px-4 py-2 text-sm text-blue-800 border-b border-blue-100"
+                    x-html="t('planner_instructions', ageMode)"></div>
 
                 <!-- Main Workspace -->
                 <div class="flex-grow flex overflow-hidden">
@@ -550,7 +550,7 @@
                         <button @click="selectActivity('remove')"
                             class="w-full mb-4 p-2 rounded-lg border-2 text-center transition-all font-bold text-sm"
                             :class="removeMode ? 'border-red-500 bg-red-50 text-red-600' : 'border-gray-200 text-gray-500 hover:border-red-300'">
-                            <span x-text="removeMode ? '🛑 Mazání aktivní' : '🗑️ Mazat aktivitu'"></span>
+                            <span x-text="removeMode ? '🛑 Mazání aktivní' : '🗑️ Vymazat aktivitu'"></span>
                         </button>
                         
                         <h3 class="font-bold text-gray-400 uppercase text-xs mb-4 sticky top-0 bg-white py-2 z-10">
@@ -601,8 +601,8 @@
                     <div class="flex-grow bg-gray-100 p-4 md:p-8 overflow-y-auto cursor-crosshair select-none relative">
 
                         <!-- Mobile Helper -->
-                        <div class="md:hidden text-center text-xs text-gray-400 mb-2">Tážením prstem vyplníš více
-                            políček</div>
+                        <div class="md:hidden text-center text-xs text-gray-400 mb-2"
+                            x-text="t('planner_mobile_helper', ageMode)"></div>
 
                         <div
                             class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-1 md:gap-2 max-w-6xl mx-auto shadow-2xl bg-white p-4 rounded-xl">
@@ -639,9 +639,8 @@
 
                     <div class="max-w-4xl mx-auto">
                         <h2 class="text-4xl font-bold mb-8 text-center"
-                            :class="ageMode === 'child' ? 'text-msvk-dark-blue' : 'text-slate-800'">
-                            Analýza Vašeho dne 📊
-                        </h2>
+                            :class="ageMode === 'child' ? 'text-msvk-dark-blue' : 'text-slate-800'"
+                            x-text="t('planner_results_title', ageMode)"></h2>
 
                         <!-- Stats Cards -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -654,16 +653,14 @@
                                     <span x-text="totalScreenTime"></span>h
                                 </div>
                                 <p class="text-lg">
-                                    <span x-show="totalScreenTime <= 2">Super! Netrávíš u obrazovek zbytečně moc času.
-                                        Odborníci doporučují trvat zábavou u obrazovek nanejvýš 2h denně.</span>
-                                    <span x-show="totalScreenTime > 2">Odborníci doporučují trvat zábavou u obrazovek nanejvýš 2h denně,
-                                        tuto hranici překračuješ. Zkus se víc bavit třeba čtením, tvořením, pohybem nebo setkáváním s přáteli.</span>
+                                    <span x-show="totalScreenTime <= 2" x-text="t('planner_screen_ok', ageMode)"></span>
+                                    <span x-show="totalScreenTime > 2" x-text="t('planner_screen_over', ageMode)"></span>
                                 </p>
                             </div>
 
                             <!-- Distribution -->
                             <div class="bg-white rounded-3xl p-8 shadow-lg">
-                                <h3 class="text-gray-500 uppercase font-bold text-sm mb-4">Jak jste rozdělili čas:</h3>
+                                <h3 class="text-gray-500 uppercase font-bold text-sm mb-4" x-text="t('planner_distribution_title', ageMode)"></h3>
                                 <div class="space-y-3">
                                     <template x-for="stat in statsByActivity.slice(0, 5)">
                                         <div class="flex items-center gap-3">

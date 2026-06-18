@@ -1,213 +1,207 @@
 // Data Layer for DIGIFLOW (APPKA PORG)
-// Updated with 12 scenarios and all reaction options
+// Updated with 12 scenarios and 6 reaction options each
+// Options sourced from "Aplikace pro MSVK - 6 řešení.docx"
+//
+// Text variants: `description` and `feedback` may be either a plain string
+// (age-neutral) or an object { child, adult } for tykání (child) / vykání
+// (adult). They are resolved in the UI via the global tv() helper (see i18n.js).
 
 /**
  * Scenarios for Task 1 (Quiz)
- * Based on the 12 situations from "App MSVK situace-reakce.docx"
+ * Based on the 12 situations from "Aplikace pro MSVK - 6 řešení.docx"
+ * Each scenario has 6 options: ideal / ok (celkem dobré) / bad (nevhodné)
  */
 const SCENARIOS = [
     {
         id: 'humor',
         title: 'Vtipný příspěvek',
-        description: 'Sdílel/a jsi příspěvek, který ti připadal vtipný, jenže ostatním ne. Teď se smějí tobě, ne tvému vtipu.',
+        description: {
+            child: 'Sdílel/a jsi příspěvek, který ti připadal vtipný, jenže ostatním ne. Teď se smějí tobě, ne tvému vtipu. <b>Co uděláš?</b>',
+            adult: 'Sdílel/a jste příspěvek, který vám připadal vtipný, jenže ostatním ne. Teď se smějí vám, ne vašemu vtipu. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nevhodné. Pokud tě někdo neuráží, blokace působí přehnaně.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Dává smysl pouze v případě, že výsměch přejde v urážky.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Pomůže ti zpracovat trapný pocit a získat nadhled.' },
-            { text: 'Dát si pauzu', type: 'ok', feedback: 'Docela dobré. Krátké odpojení ti pomůže ulevit od studu nebo stresu.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Obrana nebo hádka situaci obvykle zhorší.' },
-            { text: 'Ignorovat', type: 'ok', feedback: 'Docela dobré. Pokud nejde o šikanu, může být nejlepší prostě nechat věc vyšumět.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Nastavení soukromí neřeší reakce lidí na příspěvek.' },
-            { text: 'Smazat příspěvek', type: 'ideal', feedback: 'Ideální. Ukončíš situaci, která ti je nepříjemná, a projevíš zralost.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nevhodné. Kvůli jedné situaci není nutné aplikaci mazat.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. Nové přátelství situaci nijak neřeší.' }
+            { text: 'Smazat příspěvek', type: 'ideal', feedback: { child: 'Ukončíš nepříjemnou situaci a dáš najevo, že umíš uznat, když něco nevyšlo.', adult: 'Ukončíte nepříjemnou situaci a dáte najevo, že umíte uznat, když něco nevyšlo.' } },
+            { text: 'Uznat chybu', type: 'ideal', feedback: 'Krátká reakce typu „OK, tenhle vtip asi nevyšel 😅" často napětí rychle rozpustí.' },
+            { text: 'Ignorovat komentáře', type: 'ok', feedback: 'Pokud nejde o urážky, pozornost lidí často sama odezní.' },
+            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat stud nebo trapný pocit a získat odstup.', adult: 'Pomůže vám zpracovat stud nebo trapný pocit a získat odstup.' } },
+            { text: 'Dát si na chvíli pauzu od sítí', type: 'ok', feedback: 'Krátké odpojení sníží emoční tlak a zabrání impulzivním reakcím.' },
+            { text: 'Bránit se v komentářích', type: 'bad', feedback: 'Obrana nebo vysvětlování humoru většinou zesílí posměch a konflikt.' }
         ]
     },
     {
         id: 'flirting',
         title: 'Neznámý člověk',
-        description: 'Začne ti psát někdo, koho neznáš, snaží se s tebou flirtovat a neustále se vyptává na osobní otázky.',
+        description: {
+            child: 'Začne ti psát někdo, koho neznáš, snaží se s tebou flirtovat a neustále se vyptává na osobní otázky. <b>Co uděláš?</b>   ',
+            adult: 'Začne vám psát někdo, koho neznáte, snaží se s vámi flirtovat a neustále se vyptává na osobní otázky. <b>Co uděláte?</b>   '
+        },
         options: [
-            { text: 'Zablokovat', type: 'ideal', feedback: 'Ideální. Chráníš své soukromí i psychické bezpečí.' },
-            { text: 'Nahlásit', type: 'ideal', feedback: 'Ideální. Pomůžeš sobě i ostatním, pokud dotyčný obtěžuje více lidí.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Sdílení s někým spolehlivým ti dodá podporu i jistotu.' },
-            { text: 'Dát si pauzu', type: 'bad', feedback: 'Nevhodné. Problém je v konkrétní osobě, ne v přetížení sociálními sítěmi.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Odpovídání může podnítit další kontakt.' },
-            { text: 'Ignorovat', type: 'ok', feedback: 'Docela dobré. Pokud nejde o hrozbu, může být dočasně účinné.' },
-            { text: 'Změnit nastavení', type: 'ok', feedback: 'Docela dobré. Pomůže omezit, kdo ti může psát.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Nejde o sdílený obsah.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nedává smysl. Není nutné mazat aplikaci kvůli jednomu kontaktu.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nevhodné. Zvyšuje riziko manipulace, podvodu nebo obtěžování.' }
+            { text: 'Zablokovat dotyčného', type: 'ideal', feedback: { child: 'Okamžitě přerušíš kontakt a ochráníš své soukromí i psychickou pohodu.', adult: 'Okamžitě přerušíte kontakt a ochráníte své soukromí i psychickou pohodu.' } },
+            { text: 'Nahlásit profil nebo zprávy', type: 'ideal', feedback: { child: 'Pomáháš zastavit obtěžování a chráníš i ostatní uživatele.', adult: 'Pomáháte zastavit obtěžování a chráníte i ostatní uživatele.' } },
+            { text: 'Svěřit se někomu', type: 'ok', feedback: { child: 'Získáš podporu a radu, jak situaci řešit bezpečně a s klidem.', adult: 'Získáte podporu a radu, jak situaci řešit bezpečně a s klidem.' } },
+            { text: 'Omezit, kdo ti může psát', type: 'ok', feedback: { child: 'Snížíš pravděpodobnost, že se podobná situace bude opakovat.', adult: 'Snížíte pravděpodobnost, že se podobná situace bude opakovat.' } },
+            { text: 'Ignorovat, ono to přestane', type: 'bad', feedback: 'Krátkodobě může fungovat, ale často vede k tomu, že dotyčný pokračuje.' },
+            { text: 'Navázat konverzaci a odpovídat', type: 'bad', feedback: { child: 'Zvyšuješ riziko manipulace, zneužití osobních informací nebo nátlaku.', adult: 'Zvyšujete riziko manipulace, zneužití osobních informací nebo nátlaku.' } }
         ]
     },
     {
         id: 'comparison',
         title: 'Srovnávání se',
-        description: 'Čím dál častěji se porovnáváš s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než ty.',
+        description: {
+            child: 'Čím dál častěji se porovnáváš s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než ty. <b>Co uděláš?</b>',
+            adult: 'Čím dál častěji se porovnáváte s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než vy. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Problém není v konkrétním člověku, ale v celkovém působení obsahu.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Není co nahlásit – lidé jen sdílejí svůj život.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Sdílení pocitů pomáhá uvědomit si, že podobně se cítí i ostatní.' },
-            { text: 'Dát si pauzu', type: 'ideal', feedback: 'Ideální. Pomůže přerušit nezdravé srovnávání a obnovit vnitřní rovnováhu.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Jde o tvé vnitřní prožívání.' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nevhodné. Potlačení těchto emocí bez změny chování problém neřeší.' },
-            { text: 'Změnit nastavení', type: 'ok', feedback: 'Docela dobré. Můžeš si skrýt obsah, který ti spouští negativní pocity.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Situace se netýká tvého obsahu.' },
-            { text: 'Odinstalovat', type: 'ideal', feedback: 'Ideální. Dlouhodobá přestávka může zlepšit sebevnímání i duševní pohodu.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. Nové kontakty nepomohou řešit negativní srovnávání.' }
+            { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš neustálé srovnávání a dáš prostoru návrat k vlastnímu prožívání.', adult: 'Přerušíte neustálé srovnávání a dáte prostoru návrat k vlastnímu prožívání.' } },
+            { text: 'Omezit čas na sítích', type: 'ideal', feedback: { child: 'Získáš více podnětů z offline života a nebudeš se tolik soustředit na obraz ostatních na sítích.', adult: 'Získáte více podnětů z offline života a nebudete se tolik soustředit na obraz ostatních na sítích.' } },
+            { text: 'Skrýt účty, které způsobují nepříjemné pocity', type: 'ok', feedback: { child: 'Snížíš množství spouštěčů negativního srovnávání.', adult: 'Snížíte množství spouštěčů negativního srovnávání.' } },
+            { text: 'Připomínat si, že lidi sdílí jen to pěkné', type: 'ok', feedback: 'Pomáhá kognitivně oslabit zkreslení „všichni se mají lépe než já".' },
+            { text: 'Odinstalovat aplikaci', type: 'ok', feedback: 'Dlouhodobá změna prostředí může výrazně zlepšit sebevědomí i psychickou pohodu.' },
+            { text: 'Ignorovat, vždyť ono to přejde', type: 'bad', feedback: 'Neřešené emoce se hromadí a mohou vést k dlouhodobé nespokojenosti nebo úzkosti.' }
         ]
     },
     {
         id: 'cyberbullying',
         title: 'Kyberšikana',
-        description: 'Dostaneš se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti tobě.',
+        description: {
+            child: 'Dostaneš se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti tobě. <b>Co uděláš?</b>',
+            adult: 'Dostanete se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti vám. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'ok', feedback: 'Docela dobré. Pokud tě někdo uráží, blokace je vhodná.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nevhodné. Pokud nejde o vyložené porušení pravidel, není to nutné.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Sdílení s někým blízkým může pomoci zpracovat negativní pocity.' },
-            { text: 'Dát si pauzu', type: 'ideal', feedback: 'Ideální. Pomůže zklidnit emoce a zabránit dalšímu vyhrocování.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Pokračování v hádce situaci jen zhoršuje.' },
-            { text: 'Ignorovat', type: 'ideal', feedback: 'Ideální. Ukončíš zbytečnou konfrontaci a chráníš své duševní zdraví.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Nastavení soukromí se hádky v komentářích netýká.' },
-            { text: 'Smazat příspěvek', type: 'ok', feedback: 'Docela dobré. Pokud jsi autorem, může to situaci uklidnit.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nevhodné. Kvůli jedné hádce není potřeba mazat aplikaci.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. S lidmi, kteří tě napadají, se není vhodné spojovat.' }
+            { text: 'Dát si pauzu a přestat reagovat', type: 'ideal', feedback: { child: 'Zabráníš dalšímu vyhrocování a dáš prostor emocím, aby se uklidnily.', adult: 'Zabráníte dalšímu vyhrocování a dáte prostor emocím, aby se uklidnily.' } },
+            { text: 'Odejít z diskuze', type: 'ideal', feedback: { child: 'Ukončíš konflikt bez dalšího psychického zatížení.', adult: 'Ukončíte konflikt bez dalšího psychického zatížení.' } },
+            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.', adult: 'Pomůže vám zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.' } },
+            { text: 'Smazat příspěvek nebo komentář', type: 'ok', feedback: { child: 'Pokud jsi spustil/a diskuzi, může to pomoci konflikt rychle utlumit.', adult: 'Pokud jste spustil/a diskuzi, může to pomoci konflikt rychle utlumit.' } },
+            { text: 'Zablokovat ty, kteří tě napadají', type: 'ok', feedback: { child: 'Chráníš se před osobními útoky, i když to neřeší celou diskuzi.', adult: 'Chráníte se před osobními útoky, i když to neřeší celou diskuzi.' } },
+            { text: 'Obhajovat dál svůj názor', type: 'bad', feedback: { child: 'Přitahuješ další útočníky a konflikt se obvykle ještě více vyhrotí.', adult: 'Přitahujete další útočníky a konflikt se obvykle ještě více vyhrotí.' } }
         ]
     },
     {
         id: 'notifications',
         title: 'Noční notifikace',
-        description: 'Snažíš se usnout, ale tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje.',
+        description: {
+            child: 'Snažíš se usnout, ale tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje. <b>Co uděláš?</b>',
+            adult: 'Snažíte se usnout, ale váš displej nonstop bliká kvůli různým upozorněním a hodně vás to stresuje. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Nejde o konkrétního člověka.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Notifikace nejsou porušením pravidel.' },
-            { text: 'Svěřit se', type: 'bad', feedback: 'Nevhodné. Problém s notifikacemi vyřešíš spíš nastavením.' },
-            { text: 'Dát si pauzu', type: 'ideal', feedback: 'Ideální. Odložení telefonu pomůže uklidnit mozek a zlepšit spánek.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nedává smysl. Není s kým se hádat.' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nevhodné. Neustálé rušení bez reakce jen zvyšuje stres.' },
-            { text: 'Změnit nastavení', type: 'ideal', feedback: 'Ideální. Upravíš si notifikace a získáš kontrolu nad rušivými signály.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Situace se netýká sdíleného obsahu.' },
-            { text: 'Odinstalovat', type: 'ok', feedback: 'Docela dobré. Pokud ti aplikace dlouhodobě narušují klid, může to být zdravé řešení.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. Nové kontakty problém s notifikacemi neřeší.' }
+            { text: 'Změnit nastavení notifikací', type: 'ideal', feedback: { child: 'Získáš kontrolu nad rušivými podněty a podpoříš klidný spánek.', adult: 'Získáte kontrolu nad rušivými podněty a podpoříte klidný spánek.' } },
+            { text: 'Používat režim Nerušit / noční režim', type: 'ideal', feedback: 'Mozek se lépe zklidní a snáze přejde do režimu spánku.' },
+            { text: 'Odinstalovat nebo omezit rušivé aplikace', type: 'ok', feedback: { child: 'Dlouhodobě tím snížíš stres, i když je to spíš radikálnější krok.', adult: 'Dlouhodobě tím snížíte stres, i když je to spíš radikálnější krok.' } },
+            { text: 'Nastavit si pravidlo „bez mobilu před spaním"', type: 'ok', feedback: 'Pomáhá vytvořit zdravý návyk, i když vyžaduje disciplínu.' },
+            { text: 'Ignorovat upozornění', type: 'bad', feedback: 'Stres se tím zvyšuje a tělo zůstává v pohotovosti.' },
+            { text: 'Neřešit to a spoléhat, že si tělo zvykne', type: 'bad', feedback: 'Dlouhodobě to může vést k poruchám spánku a vyčerpání.' }
         ]
     },
     {
         id: 'wrong_content',
         title: 'Nevhodný obsah',
-        description: 'Narazíš na příspěvek, který podle tebe není správný. Máš pocit, že chceš nějak zakročit.',
+        description: {
+            child: 'Narazíš na příspěvek, který podle tebe není správný. Máš pocit, že chceš nějak zakročit. <b>Co uděláš?</b>',
+            adult: 'Narazíte na příspěvek, který podle vás není správný. Máte pocit, že chcete nějak zakročit. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nevhodné. Blokace bude zbytečná, pokud příspěvek nepochází od člověka, který tě obtěžuje.' },
-            { text: 'Nahlásit', type: 'ideal', feedback: 'Ideální. Pokud příspěvek porušuje pravidla, je to správný krok.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Pomůže, pokud si nejsi jistý, jak reagovat.' },
-            { text: 'Dát si pauzu', type: 'bad', feedback: 'Nevhodné. Samotná pauza problém s nevhodným obsahem neřeší.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Může to vést ke konfliktům.' },
-            { text: 'Ignorovat', type: 'ok', feedback: 'Docela dobré. Ne všechen obsah musíš řešit.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Nastavení nezmění obsah, který vidíš.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Nemůžeš mazat příspěvky, které nejsou tvé.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nedává smysl. Příspěvek jedné osoby není důvodem k odinstalaci.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. S někým, kdo sdílí nevhodný obsah, se není třeba spojovat.' }
+            { text: 'Nahlásit příspěvek správcům', type: 'ideal', feedback: 'Pokud porušuje pravidla, je to nejúčinnější a nejbezpečnější způsob, jak zakročit.' },
+            { text: 'Ignorovat příspěvek, pokud není vážně škodlivý', type: 'ok', feedback: 'Ne každý nesmysl si zaslouží pozornost a další šíření.' },
+            { text: 'Svěřit se někomu zkušenějšímu', type: 'ok', feedback: { child: 'Pomůže ti ověřit, zda je reakce potřeba a jak ji zvolit.', adult: 'Pomůže vám ověřit, zda je reakce potřeba a jak ji zvolit.' } },
+            { text: 'Vyjádřit věcný a slušný nesouhlas', type: 'ok', feedback: { child: 'Má smysl jen tehdy, pokud zvládneš zůstat klidný/á a nepřilévat olej do ohně. Můžeš ale příspěvku zvýšit dosah.', adult: 'Má smysl jen tehdy, pokud zvládnete zůstat klidný/á a nepřilévat olej do ohně. Můžete ale příspěvku zvýšit dosah.' } },
+            { text: 'Impulzivně zareagovat', type: 'bad', feedback: 'Emoční reakce často posílí konflikt a zvýší dosah problematického obsahu.' },
+            { text: 'Zablokovat autora', type: 'bad', feedback: { child: 'Uleví to tobě, ale neřeší to šíření škodlivého obsahu.', adult: 'Uleví to vám, ale neřeší to šíření škodlivého obsahu.' } }
         ]
     },
     {
         id: 'strange_messages',
         title: 'Divné zprávy',
-        description: 'Tvůj známý ti neustále posílá divné a nepříjemné zprávy.',
+        description: {
+            child: 'Tvůj známý ti neustále posílá divné a nepříjemné zprávy. <b>Co uděláš?</b>',
+            adult: 'Váš známý vám neustále posílá divné a nepříjemné zprávy. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'ideal', feedback: 'Ideální. Chráníš se před nepříjemnou komunikací.' },
-            { text: 'Nahlásit', type: 'ok', feedback: 'Docela dobré. Pokud zprávy porušují pravidla, je to správné.' },
-            { text: 'Svěřit se', type: 'ideal', feedback: 'Ideální. Sdílení s někým spolehlivým ti pomůže získat podporu.' },
-            { text: 'Dát si pauzu', type: 'ok', feedback: 'Docela dobré. Přestávka ti pomůže získat odstup.' },
-            { text: 'Vyjádřit nesouhlas', type: 'ok', feedback: 'Docela dobré. Můžeš mu napsat, že ti to vadí.' },
-            { text: 'Ignorovat', type: 'ok', feedback: 'Docela dobré. Někdy je ignorování nejlepší volba.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Nastavení nezmění chování konkrétního člověka.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Nejde o příspěvek.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nevhodné. Kvůli jednomu člověku nemá smysl odstraňovat celou aplikaci.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nevhodné. Pokračování v komunikaci situaci zhorší.' }
+            { text: 'Zablokovat dotyčného', type: 'ideal', feedback: { child: 'Jasně tím nastavíš hranice a zabráníš dalšímu obtěžování.', adult: 'Jasně tím nastavíte hranice a zabráníte dalšímu obtěžování.' } },
+            { text: 'Nahlásit chování platformě', type: 'ideal', feedback: 'Pokud zprávy překračují hranice slušnosti, je to správný a systémový krok.' },
+            { text: 'Svěřit se někomu', type: 'ok', feedback: { child: 'Získáš podporu, ujištění a případně pomoc s dalším postupem.', adult: 'Získáte podporu, ujištění a případně pomoc s dalším postupem.' } },
+            { text: 'Upravit nastavení soukromí nebo zpráv', type: 'ok', feedback: { child: 'Můžeš snížit riziko, že tě bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.', adult: 'Můžete snížit riziko, že vás bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.' } },
+            { text: 'Ignorovat zprávy, ono to přestane', type: 'bad', feedback: 'Krátkodobě to může fungovat, ale často tím dáváme prostor pokračování obtěžování.' },
+            { text: 'Snažit se mu to vysvětlit', type: 'bad', feedback: 'Reakce může druhého povzbudit k dalším zprávám nebo situaci vyhrotit.' }
         ]
     },
     {
         id: 'shared_photo',
         title: 'Sdílená fotka',
-        description: 'Kamarád nebo člen rodiny zveřejnil tvou fotku, aniž by se tě zeptal. Fotka se ti nelíbí.',
+        description: {
+            child: 'Kamarád nebo člen rodiny zveřejnil tvou fotku, aniž by se tě zeptal. Fotka se ti nelíbí. <b>Co uděláš?</b>',
+            adult: 'Kamarád nebo člen rodiny zveřejnil vaši fotku, aniž by se vás zeptal. Fotka se vám nelíbí. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Je to někdo, koho znáš.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Fotka od známého obvykle neporušuje pravidla.' },
-            { text: 'Svěřit se', type: 'ideal', feedback: 'Ideální. Promluv si s dotyčným člověkem o tom, že ti to vadí.' },
-            { text: 'Dát si pauzu', type: 'ok', feedback: 'Docela dobré. Pomůže ti to získat klid.' },
-            { text: 'Vyjádřit nesouhlas', type: 'ok', feedback: 'Docela dobré. Požádej o smazání fotky.' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nedává smysl. Fotka tě pravděpodobně trápí.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Toto je problém s konkrétní osobou.' },
-            { text: 'Smazat příspěvek', type: 'ideal', feedback: 'Ideální. Požádej o smazání nebo to udělej sám/sama pokud možná.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nevhodné. Řešení není v odinstalaci aplikace.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. S někým, kdo ti udělal něco nepříjemného, se není třeba více spojovat.' }
+            { text: 'Vyjádřit klidně nesouhlas', type: 'ideal', feedback: { child: 'Jasně nastavíš hranice a dáš druhému šanci situaci napravit.', adult: 'Jasně nastavíte hranice a dáte druhému šanci situaci napravit.' } },
+            { text: 'Požádat o smazání fotky nebo odstranění označení', type: 'ideal', feedback: { child: 'Přímo řešíš problém a chráníš své soukromí.', adult: 'Přímo řešíte problém a chráníte své soukromí.' } },
+            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zorientovat se v emocích a zvolit další postup.', adult: 'Pomůže vám zorientovat se v emocích a zvolit další postup.' } },
+            { text: 'Nahlásit příspěvek', type: 'ok', feedback: { child: 'Je to oprávněný krok, když není respektováno tvé právo na soukromí, ale měl by navazovat až na další kroky.', adult: 'Je to oprávněný krok, když není respektováno vaše právo na soukromí, ale měl by navazovat až na další kroky.' } },
+            { text: 'Upravit nastavení soukromí', type: 'ok', feedback: 'Pomůže předejít podobným situacím do budoucna, ale týká se jen označování.' },
+            { text: 'Dělat, že se nic neděje', type: 'bad', feedback: { child: 'Dává to signál, že je v pořádku překračovat tvé hranice, a může to být dlouhodobě nepříjemné.', adult: 'Dává to signál, že je v pořádku překračovat vaše hranice, a může to být dlouhodobě nepříjemné.' } }
         ]
     },
     {
         id: 'someone_elses_bullying',
         title: 'Šikana jiného',
-        description: 'Spolužák je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál.',
+        description: {
+            child: 'Spolužák je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláš?</b>',
+            adult: 'Spolužák je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Tvá blokace nic nezmění.' },
-            { text: 'Nahlásit', type: 'ideal', feedback: 'Ideální. Nahlas šikanu, chráníš oběť.' },
-            { text: 'Svěřit se', type: 'ideal', feedback: 'Ideální. Promluv si s někým dospělým.' },
-            { text: 'Dát si pauzu', type: 'bad', feedback: 'Nedává smysl. Pomoc potřebuje někdo jiný.' },
-            { text: 'Vyjádřit nesouhlas', type: 'ok', feedback: 'Docela dobré. Postav se za oběť veřejně.' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nevhodné. Tvá pasivita situaci zhoršuje.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Neochráníš tím oběť.' },
-            { text: 'Smazat příspěvek', type: 'ok', feedback: 'Docela dobré. Přestaň sdílet obsah šikany.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nedává smysl. Tvá přítomnost může pomoci.' },
-            { text: 'Navázat spojení', type: 'ok', feedback: 'Docela dobré. Nabídni oběti podporu.' }
+            { text: 'Nahlásit příspěvek platformě', type: 'ideal', feedback: { child: 'Pomáháš zastavit šíření škodlivého obsahu a chráníš oběť šikany.', adult: 'Pomáháte zastavit šíření škodlivého obsahu a chráníte oběť šikany.' } },
+            { text: 'Svěřit se autoritě', type: 'ideal', feedback: { child: 'Zajistíš, že se situací bude zabývat někdo, kdo má možnost zasáhnout.', adult: 'Zajistíte, že se situací bude zabývat někdo, kdo má možnost zasáhnout.' } },
+            { text: 'Veřejně se oběti zastat', type: 'ideal', feedback: { child: 'Dáváš jasně najevo, že šikana není v pořádku, a můžeš tím prolomit „mlčení davu".', adult: 'Dáváte jasně najevo, že šikana není v pořádku, a můžete tím prolomit „mlčení davu".' } },
+            { text: 'Vyjádřit oběti podporu soukromě', type: 'ok', feedback: 'Pro oběť může být velmi posilující vědět, že v tom není sama.' },
+            { text: 'Zablokovat zdroj obsahu nebo přestat ho sledovat', type: 'ok', feedback: { child: 'Chráníš sebe před negativním obsahem, i když tím problém neřešíš systémově.', adult: 'Chráníte sebe před negativním obsahem, i když tím problém neřešíte systémově.' } },
+            { text: 'Ignorovat situaci', type: 'bad', feedback: 'Mlčení podporuje šikanu a dává agresorům pocit, že je jejich chování přijatelné.' }
         ]
     },
     {
         id: 'stranger_follow',
         title: 'Neznámý follow',
-        description: 'Někdo, koho vůbec neznáš a nemáte společné přátele, si tě přidá a chce si psát.',
+        description: {
+            child: 'Někdo, koho vůbec neznáš a nemáte společné přátele, si tě přidá a chce si psát. <b>Co uděláš?</b>',
+            adult: 'Někdo, koho vůbec neznáte a nemáte společné přátele, si vás přidá a chce si psát. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'ideal', feedback: 'Ideální. Chráníš své soukromí před cizími lidmi.' },
-            { text: 'Nahlásit', type: 'ok', feedback: 'Docela dobré. Pokud ti to je nepříjemné, je to správné.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Sdílení s někým ti pomůže rozhodnout se.' },
-            { text: 'Dát si pauzu', type: 'bad', feedback: 'Nedává smysl. Problém je konkrétní osoba, ne aplikace.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nevhodné. Zbytečná konfrontace s cizím člověkem.' },
-            { text: 'Ignorovat', type: 'ok', feedback: 'Docela dobré. Jednoduše neodpovídej.' },
-            { text: 'Změnit nastavení', type: 'ok', feedback: 'Docela dobré. Omez, kdo tě může sledovat.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Nejde o tvůj obsah.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nedává smysl. Jeden člověk není důvodem.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nevhodné. Spojení s cizím člověkem je riskantní.' }
+            { text: 'Zablokovat neznámý účet', type: 'ideal', feedback: { child: 'Okamžitě tím zabráníš kontaktu a ochráníš své soukromí.', adult: 'Okamžitě tím zabráníte kontaktu a ochráníte své soukromí.' } },
+            { text: 'Upravit nastavení soukromí', type: 'ideal', feedback: { child: 'Dlouhodobě snížíš riziko podobných situací.', adult: 'Dlouhodobě snížíte riziko podobných situací.' } },
+            { text: 'Nahlásit účet, pokud působí podezřele', type: 'ideal', feedback: { child: 'Pomáháš chránit sebe i ostatní uživatele platformy.', adult: 'Pomáháte chránit sebe i ostatní uživatele platformy.' } },
+            { text: 'Ignorovat žádost a nereagovat', type: 'ok', feedback: 'V mnoha případech kontakt sám ustane, i když nejde o aktivní řešení.' },
+            { text: 'Svěřit se někomu zkušenějšímu', type: 'ok', feedback: 'Pomůže hlavně mladším uživatelům získat jistotu, že postupují správně.' },
+            { text: 'Navázat konverzaci, o nic nejde', type: 'bad', feedback: { child: 'Zvyšuješ riziko manipulace, podvodu nebo zneužití osobních informací.', adult: 'Zvyšujete riziko manipulace, podvodu nebo zneužití osobních informací.' } }
         ]
     },
     {
         id: 'friend_insult',
         title: 'Urážka od kamaráda',
-        description: 'Dobrý kamarád tě během online hry nebo konverzace nějak urazí a hodně tě to zabolí.',
+        description: {
+            child: 'Dobrý kamarád tě během online hry nebo konverzace nějak urazí a hodně tě to zabolí. <b>Co uděláš?</b>',
+            adult: 'Dobrý kamarád vás během online hry nebo konverzace nějak urazí a hodně vás to zabolí. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Je to kamarád, se kterým bys měl mluvit.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Jde o kamaráda, ne o cizího člověka.' },
-            { text: 'Svěřit se', type: 'ideal', feedback: 'Ideální. Promluv si s ním nebo s někým blízkým.' },
-            { text: 'Dát si pauzu', type: 'ok', feedback: 'Docela dobré. Dej si čas na zpracování emocí.' },
-            { text: 'Vyjádřit nesouhlas', type: 'ideal', feedback: 'Ideální. Řekni mu, že ti to vadí a proč.' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nedává smysl. Je to tvůj kamarád, měli byste to vyřešit.' },
-            { text: 'Změnit nastavení', type: 'bad', feedback: 'Nedává smysl. Nastavení nezmění chování kamaráda.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Nejde o příspěvek.' },
-            { text: 'Odinstalovat', type: 'bad', feedback: 'Nevhodné. Kamarádství se dá řešit jinak.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. Spojení už existuje, teď ho musíte opravit.' }
+            { text: 'Říct, že ti to ublížilo', type: 'ideal', feedback: { child: 'Dáváš druhému šanci pochopit dopad jeho slov a napravit situaci.', adult: 'Dáváte druhému šanci pochopit dopad jeho slov a napravit situaci.' } },
+            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zpracovat emoce a získat nadhled, než budeš reagovat.', adult: 'Pomůže vám zpracovat emoce a získat nadhled, než budete reagovat.' } },
+            { text: 'Dát si pauzu na uklidnění', type: 'ok', feedback: { child: 'Zabráníš impulzivní reakci, i když samotný problém zatím zůstává otevřený.', adult: 'Zabráníte impulzivní reakci, i když samotný problém zatím zůstává otevřený.' } },
+            { text: 'Promyslet, co mi ublížilo', type: 'ok', feedback: 'Pojmenování emocí umožňuje se s nimi lépe vyrovnat, problémové chování ale neřeší.' },
+            { text: 'Předstírat, že se nic nestalo', type: 'bad', feedback: 'Nevyřešené pocity se mohou projevit později a vztah poškodit.' },
+            { text: 'Kamaráda zablokovat', type: 'bad', feedback: 'U blízkého vztahu jde o přehnaný krok bez pokusu o domluvu.' }
         ]
     },
     {
         id: 'scrolling_fatigue',
         title: 'Únava ze scrollování',
-        description: 'Několik hodin v kuse projíždíš příspěvky na sítích a cítíš se vyčerpaně, nejistě a trochu naštvaně.',
+        description: {
+            child: 'Několik hodin v kuse projíždíš příspěvky na sítích a cítíš se vyčerpaně, nejistě a trochu naštvaně. <b>Co uděláš?</b>',
+            adult: 'Několik hodin v kuse projíždíte příspěvky na sítích a cítíte se vyčerpaně, nejistě a trochu naštvaně. <b>Co uděláte?</b>'
+        },
         options: [
-            { text: 'Zablokovat', type: 'bad', feedback: 'Nedává smysl. Problém je ve tvém chování, ne v obsahu.' },
-            { text: 'Nahlásit', type: 'bad', feedback: 'Nedává smysl. Nikdo nic neporušil.' },
-            { text: 'Svěřit se', type: 'ok', feedback: 'Docela dobré. Sdílení pocitů pomůže.' },
-            { text: 'Dát si pauzu', type: 'ideal', feedback: 'Ideální. Okamžitě odlož telefon a jdi dělat něco jiného.' },
-            { text: 'Vyjádřit nesouhlas', type: 'bad', feedback: 'Nedává smysl. S kým bys nesouhlasil/a?' },
-            { text: 'Ignorovat', type: 'bad', feedback: 'Nevhodné. Ignorování problému ho nevyřeší.' },
-            { text: 'Změnit nastavení', type: 'ok', feedback: 'Docela dobré. Omez si čas na sociálních sítích.' },
-            { text: 'Smazat příspěvek', type: 'bad', feedback: 'Nedává smysl. Smaž spíš aplikaci než příspěvek.' },
-            { text: 'Odinstalovat', type: 'ideal', feedback: 'Ideální. Pokud ti to nepomáhá, je odinstalace zdravá.' },
-            { text: 'Navázat spojení', type: 'bad', feedback: 'Nedává smysl. Potřebuješ spíš offline kontakt.' }
+            { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš zahlcení a dáš psychice prostor se zregenerovat.', adult: 'Přerušíte zahlcení a dáte psychice prostor se zregenerovat.' } },
+            { text: 'Odinstalovat aplikaci', type: 'ok', feedback: 'Pokud se situace opakuje, dlouhodobá změna může výrazně zlepšit duševní pohodu. Je to však extrémní řešení.' },
+            { text: 'Upravit nastavení (časové limity, notifikace, doporučený obsah)', type: 'ok', feedback: { child: 'Pomůže ti lépe regulovat používání sítí, i když vyžaduje sebekontrolu.', adult: 'Pomůže vám lépe regulovat používání sítí, i když vyžaduje sebekontrolu.' } },
+            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: 'Sdílení pocitů pomáhá vstřebat zkušenost a získat nadhled.' },
+            { text: 'Ignorovat únavu a pokračovat', type: 'bad', feedback: 'Varovné signály těla se zesilují a hrozí digitální vyčerpání.' },
+            { text: 'Zlepšit si náladu jiným obsahem', type: 'bad', feedback: { child: 'Přidáváš další podněty, které únavu a frustraci obvykle ještě zhorší.', adult: 'Přidáváte další podněty, které únavu a frustraci obvykle ještě zhorší.' } }
         ]
     }
 ];

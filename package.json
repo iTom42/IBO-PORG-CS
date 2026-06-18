@@ -1,0 +1,12 @@
+{
+  "name": "bezpecne-na-netu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webová aplikace pro výuku bezpečného chování na internetu (MSVK / PORG Ostrava).",
+  "scripts": {
+    "start": "serve src -l ${PORT:-4173}"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

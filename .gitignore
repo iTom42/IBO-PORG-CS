@@ -9,6 +9,7 @@
 *.jpeg
 *.gif
 !src/assets/*.jpg
+!src/assets/*.png
 
 # Snapshots/memos
 *snapshot*.md

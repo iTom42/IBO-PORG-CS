@@ -17,19 +17,16 @@ document.addEventListener('alpine:init', () => {
         },
 
         init() {
-            // Always start at age gate
+            // Always start at the age gate, regardless of any saved state.
             this.currentView = 'age-gate';
-            // Load state from localStorage if available
+            this.ageMode = null;
+
+            // Load saved progress so completed tasks/grade are preserved,
+            // but never auto-skip the age selector.
             const savedState = localStorage.getItem('bnn_app_state');
             if (savedState) {
                 const parsed = JSON.parse(savedState);
-                this.ageMode = parsed.ageMode;
                 this.appStorage = parsed.appStorage || this.appStorage;
-
-                // Navigate to menu if mode was already selected
-                if (this.ageMode) {
-                    this.currentView = 'menu';
-                }
 
                 // Recalculate grade if tasks are done
                 if (this.appStorage.task1Completed && this.appStorage.task2Completed) {
@@ -47,6 +44,7 @@ document.addEventListener('alpine:init', () => {
 
         setAgeMode(mode) {
             this.ageMode = mode;
+            setAgeModeI18n(mode);
             this.currentView = 'menu';
             this.saveState();
         },
@@ -56,7 +54,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         resetApp() {
-            if (confirm('Opravdu chceš začít úplně od začátku? Vše se vymaže.')) {
+            if (confirm(t('reset_confirm', this.ageMode))) {
                 localStorage.removeItem('bnn_app_state');
                 localStorage.removeItem('bnn_quiz_state');
                 localStorage.removeItem('bnn_planner_state');
@@ -120,11 +118,8 @@ document.addEventListener('alpine:init', () => {
 
         get finalFeedback() {
             const grade = this.grade;
-            if (grade === 'A') return 'Fantastické! Jsi skutečný digitální mistr. 🏆';
-            if (grade === 'B') return 'Skvělá práce! Rozumíš tomu, jen malý kousek chyběl k dokonalosti.';
-            if (grade === 'C') return 'Dobrá práce, ale je tu prostor pro zlepšení. Zkus se zamyslet nad svým časem nebo reakcemi.';
-            if (grade === 'D') return 'Pozor! V online světě bys měl být opatrnější a hlídat si čas.';
-            return 'Fíha! Tohle se nepovedlo. Zkus si kurz projít znovu a naučit se víc o bezpečí.';
+            if (['A', 'B', 'C', 'D'].includes(grade)) return t('final_' + grade, this.ageMode);
+            return t('final_F', this.ageMode);
         }
     }));
 
@@ -410,7 +405,7 @@ document.addEventListener('alpine:init', () => {
             this.removeMode = false;
             
             if (activity.type === 'optional' && !this.mandatoryComplete) {
-                alert('Nejdříve musíš naplánovat všechny povinné aktivity (škola, jídlo, spánek, hygiena)!');
+                alert(t('planner_locked_alert'));
                 return;
             }
             this.selectedActivityId = id;
