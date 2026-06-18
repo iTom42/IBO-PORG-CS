@@ -39,7 +39,7 @@ const SCENARIOS = [
             { text: 'Zablokovat dotyčného', type: 'ideal', feedback: { child: 'Okamžitě přerušíš kontakt a ochráníš své soukromí i psychickou pohodu.', adult: 'Okamžitě přerušíte kontakt a ochráníte své soukromí i psychickou pohodu.' } },
             { text: 'Nahlásit profil nebo zprávy', type: 'ideal', feedback: { child: 'Pomáháš zastavit obtěžování a chráníš i ostatní uživatele.', adult: 'Pomáháte zastavit obtěžování a chráníte i ostatní uživatele.' } },
             { text: 'Svěřit se někomu', type: 'ok', feedback: { child: 'Získáš podporu a radu, jak situaci řešit bezpečně a s klidem.', adult: 'Získáte podporu a radu, jak situaci řešit bezpečně a s klidem.' } },
-            { text: 'Omezit, kdo ti může psát', type: 'ok', feedback: { child: 'Snížíš pravděpodobnost, že se podobná situace bude opakovat.', adult: 'Snížíte pravděpodobnost, že se podobná situace bude opakovat.' } },
+            { text: 'Omezit, kdo nám může psát', type: 'ok', feedback: { child: 'Snížíš pravděpodobnost, že se podobná situace bude opakovat.', adult: 'Snížíte pravděpodobnost, že se podobná situace bude opakovat.' } },
             { text: 'Ignorovat, ono to přestane', type: 'bad', feedback: 'Krátkodobě může fungovat, ale často vede k tomu, že dotyčný pokračuje.' },
             { text: 'Navázat konverzaci a odpovídat', type: 'bad', feedback: { child: 'Zvyšuješ riziko manipulace, zneužití osobních informací nebo nátlaku.', adult: 'Zvyšujete riziko manipulace, zneužití osobních informací nebo nátlaku.' } }
         ]
@@ -72,7 +72,7 @@ const SCENARIOS = [
             { text: 'Odejít z diskuze', type: 'ideal', feedback: { child: 'Ukončíš konflikt bez dalšího psychického zatížení.', adult: 'Ukončíte konflikt bez dalšího psychického zatížení.' } },
             { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.', adult: 'Pomůže vám zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.' } },
             { text: 'Smazat příspěvek nebo komentář', type: 'ok', feedback: { child: 'Pokud jsi spustil/a diskuzi, může to pomoci konflikt rychle utlumit.', adult: 'Pokud jste spustil/a diskuzi, může to pomoci konflikt rychle utlumit.' } },
-            { text: 'Zablokovat ty, kteří tě napadají', type: 'ok', feedback: { child: 'Chráníš se před osobními útoky, i když to neřeší celou diskuzi.', adult: 'Chráníte se před osobními útoky, i když to neřeší celou diskuzi.' } },
+            { text: 'Zablokovat ty, kteří nás napadají', type: 'ok', feedback: { child: 'Chráníš se před osobními útoky, i když to neřeší celou diskuzi.', adult: 'Chráníte se před osobními útoky, i když to neřeší celou diskuzi.' } },
             { text: 'Obhajovat dál svůj názor', type: 'bad', feedback: { child: 'Přitahuješ další útočníky a konflikt se obvykle ještě více vyhrotí.', adult: 'Přitahujete další útočníky a konflikt se obvykle ještě více vyhrotí.' } }
         ]
     },
@@ -180,10 +180,10 @@ const SCENARIOS = [
             adult: 'Dobrý kamarád vás během online hry nebo konverzace nějak urazí a hodně vás to zabolí. <b>Co uděláte?</b>'
         },
         options: [
-            { text: 'Říct, že ti to ublížilo', type: 'ideal', feedback: { child: 'Dáváš druhému šanci pochopit dopad jeho slov a napravit situaci.', adult: 'Dáváte druhému šanci pochopit dopad jeho slov a napravit situaci.' } },
+            { text: 'Říct, že nám to ublížilo', type: 'ideal', feedback: { child: 'Dáváš druhému šanci pochopit dopad jeho slov a napravit situaci.', adult: 'Dáváte druhému šanci pochopit dopad jeho slov a napravit situaci.' } },
             { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zpracovat emoce a získat nadhled, než budeš reagovat.', adult: 'Pomůže vám zpracovat emoce a získat nadhled, než budete reagovat.' } },
             { text: 'Dát si pauzu na uklidnění', type: 'ok', feedback: { child: 'Zabráníš impulzivní reakci, i když samotný problém zatím zůstává otevřený.', adult: 'Zabráníte impulzivní reakci, i když samotný problém zatím zůstává otevřený.' } },
-            { text: 'Promyslet, co mi ublížilo', type: 'ok', feedback: 'Pojmenování emocí umožňuje se s nimi lépe vyrovnat, problémové chování ale neřeší.' },
+            { text: 'Promyslet, co nám ublížilo', type: 'ok', feedback: 'Pojmenování emocí umožňuje se s nimi lépe vyrovnat, problémové chování ale neřeší.' },
             { text: 'Předstírat, že se nic nestalo', type: 'bad', feedback: 'Nevyřešené pocity se mohou projevit později a vztah poškodit.' },
             { text: 'Kamaráda zablokovat', type: 'bad', feedback: 'U blízkého vztahu jde o přehnaný krok bez pokusu o domluvu.' }
         ]
