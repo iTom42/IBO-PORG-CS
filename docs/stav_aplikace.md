@@ -1,36 +1,51 @@
-# Stav aplikace "Bezpečně na Netu"
+# Stav aplikace „DIGIFLOW"
+
+*(dřívější pracovní název „Bezpečně na Netu")*
+
+| | |
+|---|---|
+| **Verze:** | 3.0 |
+| **Datum:** | Červen 2026 |
+| **Status:** | Funkční, připraveno k nasazení |
 
 ## Shrnutí
-Aplikace je ve fázi **pokročilého funkčního prototypu**. Implementuje všechny klíčové funkce definované v PRD (v1.0). Je připravena k uživatelskému testování a demonstraci klientovi.
+
+Aplikace je **funkční a připravená k nasazení** na server knihovny. Implementuje všechny klíčové funkce z PRD (v3.0) a prošla několika koly oprav textů a chyb na základě připomínek MSVK. Je vhodná k pilotnímu provozu na workshopech.
 
 ## Detailní stav funkcí (dle PRD)
-- [x] **Age Gate (FR-001):** Funkční. Přepínání témat (Dítě/Dospělý) funguje a mění vizuální styl (barvy, fonty, animace).
-- [x] **Hlavní menu (FR-002):** Funkční. Rozcestník na oba úkoly s indikací dokončení.
-- [x] **Úkol 1: Kvíz (FR-003, 004, 005):**
-    - Zobrazování scénářů: Funkční, data se načítají dynamicky.
-    - Okamžitá zpětná vazba (Feedback): Funkční (modaly s vysvětlením).
-    - Vyhodnocení a skóre: Funkční, zobrazuje souhrn odpovědí.
-- [x] **Úkol 2: Plánovač (FR-006 - 011):**
-    - Výběr typu dne: Funkční (Všední den / Víkend).
-    - Paleta aktivit (Povinné/Volitelné): Funkční. Logika pro odemčení volitelných aktivit až po splnění povinných je implementována.
-    - Mřížka a Drag&Drop: Funkční. Interakce je plynulá, podporuje klikání i tažení myší.
-    - Počítání Screen Time: Funkční. Statistiky reagují v reálném čase.
-    - Vyhodnocení: Funkční. Zobrazuje grafy rozložení času i slovní doporučení.
-- [x] **Technické požadavky:**
-    - Responsivita (FR-013): Aplikace se přizpůsobuje mobilům i tabletům.
-    - Ukládání dat (Perzistence): Postup se ukládá do prohlížeče (LocalStorage), data přežijí obnovení stránky.
-    - Reset (FR-012): Tlačítko "Začít znovu" korektně promaže data a vrátí uživatele na začátek.
+
+- [x] **Věková brána (FR-001):** Funkční. Při každém spuštění se zobrazí výběr „Méně než 15 let" / „15 a více let". Přepíná vizuální styl (barvy, fonty, animace) i tón (tykání / vykání).
+- [x] **Hlavní menu (FR-002):** Funkční. Rozcestník na oba úkoly (Kvíz, Můj Den) s indikací dokončení.
+- [x] **Úkol 1 – Kvíz (FR-003 až FR-005):**
+  - 12 scénářů, každý s 6 možnostmi (typy `ideal` / `ok` / `bad`).
+  - Pořadí scénářů i možností se při každém spuštění náhodně přeskládá.
+  - Okamžitá zpětná vazba (modal) s „lepším řešením".
+  - Souhrn výsledků s rozklikávacím detailem každé otázky.
+- [x] **Úkol 2 – Můj Den (FR-006 až FR-011):**
+  - Výběr typu dne (všední / víkend).
+  - Paleta povinných a volitelných aktivit; volitelné se odemknou po použití všech povinných.
+  - Mřížka 48 bloků (30 min); podporuje klikání i tažení (i na dotyku).
+  - Výpočet času u obrazovek v reálném čase vůči doporučenému limitu 2 h.
+  - Vyhodnocení s rozložením aktivit a slovním doporučením.
+- [x] **Finální hodnocení (FR-012):** Funkční. Po dokončení obou úkolů spočítá známku A–F z bodové škály (kvíz max 5 b. + Můj Den 2 b.).
+- [x] **Reset (FR-013):** Tlačítko „Začít znovu" promaže data a vrátí na věkovou bránu.
+- [x] **Responzivita (FR-014):** Funguje na mobilu, tabletu i desktopu.
+- [x] **Perzistence:** Postup se ukládá do `localStorage`, přežije obnovení stránky.
 
 ## Technický stav
-- **Technologie:** HTML5 + Tailwind CSS + Alpine.js.
-- **Architektura:** Frontend-only řešení (žádný backend server).
-- **Závislosti:** Aplikace pro běh vyžaduje připojení k internetu (načítá knihovny z CDN).
+
+- **Technologie:** HTML5 + Tailwind CSS + Alpine.js + Lucide Icons (vše z CDN).
+- **Architektura:** Pouze frontend, žádný backend ani databáze.
+- **Závislosti:** Pro běh je nutné připojení k internetu (knihovny a fonty z CDN).
 - **Struktura kódu:**
-    - Logika je oddělena v `js/app.js`.
-    - Data (scénáře, aktivity) jsou v `js/data.js` pro snadnou editaci.
-    - Vzhled je definován v HTML pomocí Tailwind tříd.
+  - Logika a výpočty: `js/app.js`
+  - Data kvízu a aktivit: `js/data.js` (pro snadnou editaci obsahu)
+  - Texty dle věku (tykání/vykání): `js/i18n.js`
+  - Vzhled: Tailwind třídy v `index.html`
 
 ## Doporučení pro klienta
-1.  **Testování obsahu:** Nyní je ideální chvíle projít si všechny texty ve scénářích a ověřit, zda jsou pro cílovou skupinu srozumitelné.
-2.  **Pilotní test:** Doporučujeme vyzkoušet aplikaci na tabletu, který se bude v knihovně používat, pro ověření ergonomie ovládání dotykem.
-3.  **Nasazení:** Aplikaci lze hostovat na jakémkoli běžném webhostingu (static hosting) bez nároků na databázi.
+
+1. **Finální korektura textů:** Projít všechny scénáře a hodnocení a ověřit srozumitelnost a bezchybnost.
+2. **Pilotní test na tabletu:** Vyzkoušet ergonomii dotykového ovládání na zařízení, které se bude v knihovně používat.
+3. **Nasazení:** Aplikaci lze hostovat na běžném webovém serveru (např. Apache) bez databáze. Podrobný návod pro administrátora je v [NASAZENI.md](NASAZENI.md). Dodávka probíhá formou ZIP balíčku.
+4. **Internetové připojení:** Na místě konání workshopu je nutné funkční připojení k internetu (kvůli CDN).
