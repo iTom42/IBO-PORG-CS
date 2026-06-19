@@ -17,13 +17,13 @@ const SCENARIOS = [
         title: 'Vtipný příspěvek',
         description: {
             child: 'Sdílel/a jsi příspěvek, který ti připadal vtipný, jenže ostatním ne. Teď se smějí tobě, ne tvému vtipu. <b>Co uděláš?</b>',
-            adult: 'Sdílel/a jste příspěvek, který vám připadal vtipný, jenže ostatním ne. Teď se smějí vám, ne vašemu vtipu. <b>Co uděláte?</b>'
+            adult: 'Sdílel/a jste příspěvek, který Vám připadal vtipný, jenže ostatním ne. Teď se smějí Vám, ne Vašemu vtipu. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Smazat příspěvek', type: 'ideal', feedback: { child: 'Ukončíš nepříjemnou situaci a dáš najevo, že umíš uznat, když něco nevyšlo.', adult: 'Ukončíte nepříjemnou situaci a dáte najevo, že umíte uznat, když něco nevyšlo.' } },
             { text: 'Uznat chybu', type: 'ideal', feedback: 'Krátká reakce typu „OK, tenhle vtip asi nevyšel 😅" často napětí rychle rozpustí.' },
             { text: 'Ignorovat komentáře', type: 'ok', feedback: 'Pokud nejde o urážky, pozornost lidí často sama odezní.' },
-            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat stud nebo trapný pocit a získat odstup.', adult: 'Pomůže vám zpracovat stud nebo trapný pocit a získat odstup.' } },
+            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat stud nebo trapný pocit a získat odstup.', adult: 'Pomůže Vám zpracovat stud nebo trapný pocit a získat odstup.' } },
             { text: 'Dát si na chvíli pauzu od sítí', type: 'ok', feedback: 'Krátké odpojení sníží emoční tlak a zabrání impulzivním reakcím.' },
             { text: 'Bránit se v komentářích', type: 'bad', feedback: 'Obrana nebo vysvětlování humoru většinou zesílí posměch a konflikt.' }
         ]
@@ -33,7 +33,7 @@ const SCENARIOS = [
         title: 'Neznámý člověk',
         description: {
             child: 'Začne ti psát někdo, koho neznáš, snaží se s tebou flirtovat a neustále se vyptává na osobní otázky. <b>Co uděláš?</b>   ',
-            adult: 'Začne vám psát někdo, koho neznáte, snaží se s vámi flirtovat a neustále se vyptává na osobní otázky. <b>Co uděláte?</b>   '
+            adult: 'Začne Vám psát někdo, koho neznáte, snaží se s Vámi flirtovat a neustále se vyptává na osobní otázky. <b>Co uděláte?</b>   '
         },
         options: [
             { text: 'Zablokovat dotyčného', type: 'ideal', feedback: { child: 'Okamžitě přerušíš kontakt a ochráníš své soukromí i psychickou pohodu.', adult: 'Okamžitě přerušíte kontakt a ochráníte své soukromí i psychickou pohodu.' } },
@@ -52,7 +52,7 @@ const SCENARIOS = [
             adult: 'Čím dál častěji se porovnáváte s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než vy. <b>Co uděláte?</b>'
         },
         options: [
-            { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš neustálé srovnávání a dáš prostoru návrat k vlastnímu prožívání.', adult: 'Přerušíte neustálé srovnávání a dáte prostoru návrat k vlastnímu prožívání.' } },
+            { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš neustálé srovnávání a dáš prostor návratu k vlastnímu prožívání.', adult: 'Přerušíte neustálé srovnávání a dáte prostor návratu k vlastnímu prožívání.' } },
             { text: 'Omezit čas na sítích', type: 'ideal', feedback: { child: 'Získáš více podnětů z offline života a nebudeš se tolik soustředit na obraz ostatních na sítích.', adult: 'Získáte více podnětů z offline života a nebudete se tolik soustředit na obraz ostatních na sítích.' } },
             { text: 'Skrýt účty, které způsobují nepříjemné pocity', type: 'ok', feedback: { child: 'Snížíš množství spouštěčů negativního srovnávání.', adult: 'Snížíte množství spouštěčů negativního srovnávání.' } },
             { text: 'Připomínat si, že lidi sdílí jen to pěkné', type: 'ok', feedback: 'Pomáhá kognitivně oslabit zkreslení „všichni se mají lépe než já".' },
@@ -65,12 +65,12 @@ const SCENARIOS = [
         title: 'Kyberšikana',
         description: {
             child: 'Dostaneš se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti tobě. <b>Co uděláš?</b>',
-            adult: 'Dostanete se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti vám. <b>Co uděláte?</b>'
+            adult: 'Dostanete se do vyhrocené hádky v komentářích a najednou se ostatní začnou spojovat proti Vám. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Dát si pauzu a přestat reagovat', type: 'ideal', feedback: { child: 'Zabráníš dalšímu vyhrocování a dáš prostor emocím, aby se uklidnily.', adult: 'Zabráníte dalšímu vyhrocování a dáte prostor emocím, aby se uklidnily.' } },
             { text: 'Odejít z diskuze', type: 'ideal', feedback: { child: 'Ukončíš konflikt bez dalšího psychického zatížení.', adult: 'Ukončíte konflikt bez dalšího psychického zatížení.' } },
-            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.', adult: 'Pomůže vám zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.' } },
+            { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: { child: 'Pomůže ti zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.', adult: 'Pomůže Vám zpracovat pocit nespravedlnosti a osamění, který v takové situaci často vzniká.' } },
             { text: 'Smazat příspěvek nebo komentář', type: 'ok', feedback: { child: 'Pokud jsi spustil/a diskuzi, může to pomoci konflikt rychle utlumit.', adult: 'Pokud jste spustil/a diskuzi, může to pomoci konflikt rychle utlumit.' } },
             { text: 'Zablokovat ty, kteří nás napadají', type: 'ok', feedback: { child: 'Chráníš se před osobními útoky, i když to neřeší celou diskuzi.', adult: 'Chráníte se před osobními útoky, i když to neřeší celou diskuzi.' } },
             { text: 'Obhajovat dál svůj názor', type: 'bad', feedback: { child: 'Přitahuješ další útočníky a konflikt se obvykle ještě více vyhrotí.', adult: 'Přitahujete další útočníky a konflikt se obvykle ještě více vyhrotí.' } }
@@ -80,8 +80,8 @@ const SCENARIOS = [
         id: 'notifications',
         title: 'Noční notifikace',
         description: {
-            child: 'Snažíš se usnout, ale Tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje. <b>Co uděláš?</b>',
-            adult: 'Snažíte se usnout, ale Váš displej nonstop bliká kvůli různým upozorněním a hodně vás to stresuje. <b>Co uděláte?</b>'
+            child: 'Snažíš se usnout, ale tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje. <b>Co uděláš?</b>',
+            adult: 'Snažíte se usnout, ale Váš displej nonstop bliká kvůli různým upozorněním a hodně Vás to stresuje. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Změnit nastavení notifikací', type: 'ideal', feedback: { child: 'Získáš kontrolu nad rušivými podněty a podpoříš klidný spánek.', adult: 'Získáte kontrolu nad rušivými podněty a podpoříte klidný spánek.' } },
@@ -97,15 +97,15 @@ const SCENARIOS = [
         title: 'Nevhodný obsah',
         description: {
             child: 'Narazíš na příspěvek, který podle tebe není správný. Máš pocit, že chceš nějak zakročit. <b>Co uděláš?</b>',
-            adult: 'Narazíte na příspěvek, který podle vás není správný. Máte pocit, že chcete nějak zakročit. <b>Co uděláte?</b>'
+            adult: 'Narazíte na příspěvek, který podle Vás není správný. Máte pocit, že chcete nějak zakročit. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Nahlásit příspěvek správcům', type: 'ideal', feedback: 'Pokud porušuje pravidla, je to nejúčinnější a nejbezpečnější způsob, jak zakročit.' },
             { text: 'Ignorovat příspěvek, pokud není vážně škodlivý', type: 'ok', feedback: 'Ne každý nesmysl si zaslouží pozornost a další šíření.' },
-            { text: 'Svěřit se někomu zkušenějšímu', type: 'ok', feedback: { child: 'Pomůže ti ověřit, zda je reakce potřeba a jak ji zvolit.', adult: 'Pomůže vám ověřit, zda je reakce potřeba a jak ji zvolit.' } },
+            { text: 'Svěřit se někomu zkušenějšímu', type: 'ok', feedback: { child: 'Pomůže ti ověřit, zda je reakce potřeba a jak ji zvolit.', adult: 'Pomůže Vám ověřit, zda je reakce potřeba a jak ji zvolit.' } },
             { text: 'Vyjádřit věcný a slušný nesouhlas', type: 'ok', feedback: { child: 'Má smysl jen tehdy, pokud zvládneš zůstat klidný/á a nepřilévat olej do ohně. Můžeš ale příspěvku zvýšit dosah.', adult: 'Má smysl jen tehdy, pokud zvládnete zůstat klidný/á a nepřilévat olej do ohně. Můžete ale příspěvku zvýšit dosah.' } },
             { text: 'Impulzivně zareagovat', type: 'bad', feedback: 'Emoční reakce často posílí konflikt a zvýší dosah problematického obsahu.' },
-            { text: 'Zablokovat autora', type: 'bad', feedback: { child: 'Uleví to tobě, ale neřeší to šíření škodlivého obsahu.', adult: 'Uleví to vám, ale neřeší to šíření škodlivého obsahu.' } }
+            { text: 'Zablokovat autora', type: 'bad', feedback: { child: 'Uleví to tobě, ale neřeší to šíření škodlivého obsahu.', adult: 'Uleví to Vám, ale neřeší to šíření škodlivého obsahu.' } }
         ]
     },
     {
@@ -113,13 +113,13 @@ const SCENARIOS = [
         title: 'Divné zprávy',
         description: {
             child: 'Tvůj známý ti neustále posílá divné a nepříjemné zprávy. <b>Co uděláš?</b>',
-            adult: 'Váš známý vám neustále posílá divné a nepříjemné zprávy. <b>Co uděláte?</b>'
+            adult: 'Váš známý Vám neustále posílá divné a nepříjemné zprávy. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Zablokovat dotyčného', type: 'ideal', feedback: { child: 'Jasně tím nastavíš hranice a zabráníš dalšímu obtěžování.', adult: 'Jasně tím nastavíte hranice a zabráníte dalšímu obtěžování.' } },
             { text: 'Nahlásit chování platformě', type: 'ideal', feedback: 'Pokud zprávy překračují hranice slušnosti, je to správný a systémový krok.' },
             { text: 'Svěřit se někomu', type: 'ok', feedback: { child: 'Získáš podporu, ujištění a případně pomoc s dalším postupem.', adult: 'Získáte podporu, ujištění a případně pomoc s dalším postupem.' } },
-            { text: 'Upravit nastavení soukromí nebo zpráv', type: 'ok', feedback: { child: 'Můžeš snížit riziko, že tě bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.', adult: 'Můžete snížit riziko, že vás bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.' } },
+            { text: 'Upravit nastavení soukromí nebo zpráv', type: 'ok', feedback: { child: 'Můžeš snížit riziko, že tě bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.', adult: 'Můžete snížit riziko, že Vás bude kontaktovat znovu nebo že se to bude opakovat u jiných lidí.' } },
             { text: 'Ignorovat zprávy, ono to přestane', type: 'bad', feedback: 'Krátkodobě to může fungovat, ale často tím dáváme prostor pokračování obtěžování.' },
             { text: 'Snažit se mu to vysvětlit', type: 'bad', feedback: 'Reakce může druhého povzbudit k dalším zprávám nebo situaci vyhrotit.' }
         ]
@@ -129,15 +129,15 @@ const SCENARIOS = [
         title: 'Sdílená fotka',
         description: {
             child: 'Kamarád nebo člen rodiny zveřejnil tvou fotku, aniž by se tě zeptal. Fotka se ti nelíbí. <b>Co uděláš?</b>',
-            adult: 'Kamarád nebo člen rodiny zveřejnil vaši fotku, aniž by se vás zeptal. Fotka se vám nelíbí. <b>Co uděláte?</b>'
+            adult: 'Kamarád nebo člen rodiny zveřejnil Vaši fotku, aniž by se Vás zeptal. Fotka se Vám nelíbí. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Vyjádřit klidně nesouhlas', type: 'ideal', feedback: { child: 'Jasně nastavíš hranice a dáš druhému šanci situaci napravit.', adult: 'Jasně nastavíte hranice a dáte druhému šanci situaci napravit.' } },
             { text: 'Požádat o smazání fotky nebo odstranění označení', type: 'ideal', feedback: { child: 'Přímo řešíš problém a chráníš své soukromí.', adult: 'Přímo řešíte problém a chráníte své soukromí.' } },
-            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zorientovat se v emocích a zvolit další postup.', adult: 'Pomůže vám zorientovat se v emocích a zvolit další postup.' } },
-            { text: 'Nahlásit příspěvek', type: 'ok', feedback: { child: 'Je to oprávněný krok, když není respektováno tvé právo na soukromí, ale měl by navazovat až na další kroky.', adult: 'Je to oprávněný krok, když není respektováno vaše právo na soukromí, ale měl by navazovat až na další kroky.' } },
+            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zorientovat se v emocích a zvolit další postup.', adult: 'Pomůže Vám zorientovat se v emocích a zvolit další postup.' } },
+            { text: 'Nahlásit příspěvek', type: 'ok', feedback: { child: 'Je to oprávněný krok, když není respektováno tvé právo na soukromí, ale měl by navazovat až na další kroky.', adult: 'Je to oprávněný krok, když není respektováno Vaše právo na soukromí, ale měl by navazovat až na další kroky.' } },
             { text: 'Upravit nastavení soukromí', type: 'ok', feedback: 'Pomůže předejít podobným situacím do budoucna, ale týká se jen označování.' },
-            { text: 'Dělat, že se nic neděje', type: 'bad', feedback: { child: 'Dává to signál, že je v pořádku překračovat tvé hranice, a může to být dlouhodobě nepříjemné.', adult: 'Dává to signál, že je v pořádku překračovat vaše hranice, a může to být dlouhodobě nepříjemné.' } }
+            { text: 'Dělat, že se nic neděje', type: 'bad', feedback: { child: 'Dává to signál, že je v pořádku překračovat tvé hranice, a může to být dlouhodobě nepříjemné.', adult: 'Dává to signál, že je v pořádku překračovat Vaše hranice, a může to být dlouhodobě nepříjemné.' } }
         ]
     },
     {
@@ -161,7 +161,7 @@ const SCENARIOS = [
         title: 'Neznámý follow',
         description: {
             child: 'Někdo, koho vůbec neznáš a nemáte společné přátele, si tě přidá a chce si psát. <b>Co uděláš?</b>',
-            adult: 'Někdo, koho vůbec neznáte a nemáte společné přátele, si vás přidá a chce si psát. <b>Co uděláte?</b>'
+            adult: 'Někdo, koho vůbec neznáte a nemáte společné přátele, si Vás přidá a chce si psát. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Zablokovat neznámý účet', type: 'ideal', feedback: { child: 'Okamžitě tím zabráníš kontaktu a ochráníš své soukromí.', adult: 'Okamžitě tím zabráníte kontaktu a ochráníte své soukromí.' } },
@@ -177,11 +177,11 @@ const SCENARIOS = [
         title: 'Urážka od kamaráda',
         description: {
             child: 'Dobrý kamarád tě během online hry nebo konverzace nějak urazí a hodně tě to zabolí. <b>Co uděláš?</b>',
-            adult: 'Dobrý kamarád vás během online hry nebo konverzace nějak urazí a hodně vás to zabolí. <b>Co uděláte?</b>'
+            adult: 'Dobrý kamarád vás během online hry nebo konverzace nějak urazí a hodně Vás to zabolí. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Říct, že nám to ublížilo', type: 'ideal', feedback: { child: 'Dáváš druhému šanci pochopit dopad jeho slov a napravit situaci.', adult: 'Dáváte druhému šanci pochopit dopad jeho slov a napravit situaci.' } },
-            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zpracovat emoce a získat nadhled, než budeš reagovat.', adult: 'Pomůže vám zpracovat emoce a získat nadhled, než budete reagovat.' } },
+            { text: 'Svěřit se někomu', type: 'ideal', feedback: { child: 'Pomůže ti zpracovat emoce a získat nadhled, než budeš reagovat.', adult: 'Pomůže Vám zpracovat emoce a získat nadhled, než budete reagovat.' } },
             { text: 'Dát si pauzu na uklidnění', type: 'ok', feedback: { child: 'Zabráníš impulzivní reakci, i když samotný problém zatím zůstává otevřený.', adult: 'Zabráníte impulzivní reakci, i když samotný problém zatím zůstává otevřený.' } },
             { text: 'Promyslet, co nám ublížilo', type: 'ok', feedback: 'Pojmenování emocí umožňuje se s nimi lépe vyrovnat, problémové chování ale neřeší.' },
             { text: 'Předstírat, že se nic nestalo', type: 'bad', feedback: 'Nevyřešené pocity se mohou projevit později a vztah poškodit.' },
@@ -198,7 +198,7 @@ const SCENARIOS = [
         options: [
             { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš zahlcení a dáš psychice prostor se zregenerovat.', adult: 'Přerušíte zahlcení a dáte psychice prostor se zregenerovat.' } },
             { text: 'Odinstalovat aplikaci', type: 'ok', feedback: 'Pokud se situace opakuje, dlouhodobá změna může výrazně zlepšit duševní pohodu. Je to však extrémní řešení.' },
-            { text: 'Upravit nastavení (časové limity, notifikace, doporučený obsah)', type: 'ok', feedback: { child: 'Pomůže ti lépe regulovat používání sítí, i když vyžaduje sebekontrolu.', adult: 'Pomůže vám lépe regulovat používání sítí, i když vyžaduje sebekontrolu.' } },
+            { text: 'Upravit nastavení (časové limity, notifikace, doporučený obsah)', type: 'ok', feedback: { child: 'Pomůže ti lépe regulovat používání sítí, i když vyžaduje sebekontrolu.', adult: 'Pomůže Vám lépe regulovat používání sítí, i když vyžaduje sebekontrolu.' } },
             { text: 'Svěřit se někomu blízkému', type: 'ok', feedback: 'Sdílení pocitů pomáhá vstřebat zkušenost a získat nadhled.' },
             { text: 'Ignorovat únavu a pokračovat', type: 'bad', feedback: 'Varovné signály těla se zesilují a hrozí digitální vyčerpání.' },
             { text: 'Zlepšit si náladu jiným obsahem', type: 'bad', feedback: { child: 'Přidáváš další podněty, které únavu a frustraci obvykle ještě zhorší.', adult: 'Přidáváte další podněty, které únavu a frustraci obvykle ještě zhorší.' } }

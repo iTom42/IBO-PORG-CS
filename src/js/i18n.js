@@ -77,7 +77,7 @@ const UI_STRINGS = {
         adult: 'Tažením prstu vyplníte více políček'
     },
     planner_results_title: {
-        child: 'Analýza Tvého dne 📊',
+        child: 'Analýza tvého dne 📊',
         adult: 'Analýza Vašeho dne 📊'
     },
     planner_screen_ok: {
