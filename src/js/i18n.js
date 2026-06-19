@@ -77,8 +77,8 @@ const UI_STRINGS = {
         adult: 'Tažením prstu vyplníte více políček'
     },
     planner_results_title: {
-        child: 'Analýza tvého dne 📊',
-        adult: 'Analýza vašeho dne 📊'
+        child: 'Analýza Tvého dne 📊',
+        adult: 'Analýza Vašeho dne 📊'
     },
     planner_screen_ok: {
         child: 'Super! Netrávíš u obrazovek zbytečně moc času. Odborníci doporučují trávit zábavou u obrazovek nanejvýš 2h denně.',
