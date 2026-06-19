@@ -80,8 +80,8 @@ const SCENARIOS = [
         id: 'notifications',
         title: 'Noční notifikace',
         description: {
-            child: 'Snažíš se usnout, ale tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje. <b>Co uděláš?</b>',
-            adult: 'Snažíte se usnout, ale váš displej nonstop bliká kvůli různým upozorněním a hodně vás to stresuje. <b>Co uděláte?</b>'
+            child: 'Snažíš se usnout, ale Tvůj displej nonstop bliká kvůli různým upozorněním a hodně tě to stresuje. <b>Co uděláš?</b>',
+            adult: 'Snažíte se usnout, ale Váš displej nonstop bliká kvůli různým upozorněním a hodně vás to stresuje. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Změnit nastavení notifikací', type: 'ideal', feedback: { child: 'Získáš kontrolu nad rušivými podněty a podpoříš klidný spánek.', adult: 'Získáte kontrolu nad rušivými podněty a podpoříte klidný spánek.' } },
