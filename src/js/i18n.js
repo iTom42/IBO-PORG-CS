@@ -69,8 +69,8 @@ const UI_STRINGS = {
         adult: 'Vyplňte celý den ⏳'
     },
     planner_instructions: {
-        child: '<strong>Návod:</strong> Nejprve vyber všední nebo víkendový den. Poté naklikej povinné položky z levého sloupce do časových oken. Po použití všech povinných ikon se odemknou volitelné ikonky. Kliknutím na „Vymazat aktivitu" můžeš smazat libovolnou buňku.',
-        adult: '<strong>Návod:</strong> Nejprve vyberte všední nebo víkendový den. Poté naklikejte povinné položky z levého sloupce do časových oken. Po použití všech povinných ikon se odemknou volitelné ikonky. Kliknutím na „Vymazat aktivitu" můžete smazat libovolnou buňku.'
+        child: '<strong>Návod:</strong> Nejprve vyber všední nebo víkendový den v levém horním rohu obrazovky. Poté naklikej povinné položky z levého sloupce do časových oken. Po použití všech povinných ikon se odemknou volitelné ikonky. Kliknutím na „Vymazat aktivitu" můžeš smazat libovolnou buňku. Po vyplnění všech časových oken klikni na tlačítko „Vyhodnotit den“ v pravém horním rohu obrazovky',
+        adult: '<strong>Návod:</strong> Nejprve vyberte všední nebo víkendový den v levém horním rohu obrazovky. Poté naklikejte povinné položky z levého sloupce do časových oken. Po použití všech povinných ikon se odemknou volitelné ikonky. Kliknutím na „Vymazat aktivitu" můžete smazat libovolnou buňku. Po vyplnění všech časových oken klikněte na tlačítko „Vyhodnotit den“ v pravém horním rohu obrazovky'
     },
     planner_mobile_helper: {
         child: 'Tažením prstu vyplníš více políček',

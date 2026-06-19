@@ -49,7 +49,7 @@ const SCENARIOS = [
         title: 'Srovnávání se',
         description: {
             child: 'Čím dál častěji se porovnáváš s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než ty. <b>Co uděláš?</b>',
-            adult: 'Čím dál častěji se porovnáváte s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než vy. <b>Co uděláte?</b>'
+            adult: 'Čím dál častěji se porovnáváte s ostatními lidmi online – všichni vypadají skvěle a žijí lepší život než Vy. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Dát si pauzu od sítí', type: 'ideal', feedback: { child: 'Přerušíš neustálé srovnávání a dáš prostor návratu k vlastnímu prožívání.', adult: 'Přerušíte neustálé srovnávání a dáte prostor návratu k vlastnímu prožívání.' } },
@@ -144,8 +144,8 @@ const SCENARIOS = [
         id: 'someone_elses_bullying',
         title: 'Šikana jiného',
         description: {
-            child: 'Spolužák je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláš?</b>',
-            adult: 'Spolužák je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláte?</b>'
+            child: 'Někdo,  koho znáš, je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláš?</b>',
+            adult: 'Někdo, koho znáte, je veřejně zesměšňovaný online, nikdo se ho nezastane a všichni to sdílejí dál. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Nahlásit příspěvek platformě', type: 'ideal', feedback: { child: 'Pomáháš zastavit šíření škodlivého obsahu a chráníš oběť šikany.', adult: 'Pomáháte zastavit šíření škodlivého obsahu a chráníte oběť šikany.' } },
@@ -177,7 +177,7 @@ const SCENARIOS = [
         title: 'Urážka od kamaráda',
         description: {
             child: 'Dobrý kamarád tě během online hry nebo konverzace nějak urazí a hodně tě to zabolí. <b>Co uděláš?</b>',
-            adult: 'Dobrý kamarád vás během online hry nebo konverzace nějak urazí a hodně Vás to zabolí. <b>Co uděláte?</b>'
+            adult: 'Dobrý kamarád Vás během online hry nebo konverzace nějak urazí a hodně Vás to zabolí. <b>Co uděláte?</b>'
         },
         options: [
             { text: 'Říct, že nám to ublížilo', type: 'ideal', feedback: { child: 'Dáváš druhému šanci pochopit dopad jeho slov a napravit situaci.', adult: 'Dáváte druhému šanci pochopit dopad jeho slov a napravit situaci.' } },
